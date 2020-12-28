@@ -11,6 +11,8 @@ namespace AutoTavex
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            // Pt a creea rutele in Controllere
+            routes.MapMvcAttributeRoutes();
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
