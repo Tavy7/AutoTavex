@@ -1,0 +1,43 @@
+﻿@model IEnumerable<AutoTavex.Models.Car>
+
+@{
+    ViewBag.Title = "Cars";
+}
+
+<h2>Cars</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <th>Car</th>
+        <th>Name</th>
+        <th>Engine</th>
+        <th>Horsepower</th>
+        <th>Manufactured</th>
+    </thead>
+</table>
+
+<tbody>
+    @foreach (var car in Model)
+    {
+        if (car == null)
+        {
+            continue;
+        }
+        <tr>
+            <td>@Html.ActionLink(car.Name, "Edit/" + car.Id.ToString(), "Car")</td>
+            @{ 
+                @* Daca  *@
+            var engine = car.HasThermalEngine ? "Thermal" : "Electic";
+            if (car.IsHybrid)
+            {
+                engine += " Hybrid";
+            }
+            engine += (" " + car.CylindricalCapacity + "cmc");
+            }
+            <td>@engine</td>
+            <td>@car.HorsePower</td>
+            <td>@car.YearManufactured</td>
+        </tr>
+    }
+</tbody>
+

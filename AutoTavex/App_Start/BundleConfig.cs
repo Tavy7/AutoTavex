@@ -23,7 +23,7 @@ namespace AutoTavex
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/solarBootstrap.min.css",
+                      "~/Content/superheroBootstrap.min.css",
                       "~/Content/site.css"));
         }
     }
