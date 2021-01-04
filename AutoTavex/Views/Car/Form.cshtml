@@ -1,0 +1,69 @@
+﻿@model AutoTavex.ViewModels.CarFormViewmodel
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@{
+    ViewBag.Title = @Model.Title;
+}
+
+<h2>@Model.Title Car</h2>
+
+@using (Html.BeginForm("Save", "Car", FormMethod.Post)) // ActionName, ControllerName
+{
+    @Html.ValidationSummary(true, "Please fix the following errors.")
+    @Html.HiddenFor(c => c.Car.Id)
+    <div class="form-group">
+        @Html.LabelFor(c => c.Car.Manufacturer)
+        @Html.TextBoxFor(c => c.Car.Manufacturer, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Car.Manufacturer)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Car.Series)
+        @Html.TextBoxFor(c => c.Car.Series, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Car.Series)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Car.Vin)
+        @Html.TextBoxFor(c => c.Car.Vin, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Car.Vin)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Car.CylindricalCapacity)
+        @Html.TextBoxFor(c => c.Car.CylindricalCapacity, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Car.HorsePower)
+        @Html.TextBoxFor(c => c.Car.HorsePower, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Car.YearManufactured)
+        @Html.TextBoxFor(c => c.Car.YearManufactured, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Car.YearManufactured)
+    </div>
+
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(c => c.Car.HasThermalEngine) Has Thermal Engine
+        </label>
+    </div>
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.Car.IsHybrid) Is Hybrid
+        </label>
+    </div>
+
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+}

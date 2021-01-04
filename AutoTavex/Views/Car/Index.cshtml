@@ -5,39 +5,51 @@
 }
 
 <h2>Cars</h2>
+@Html.ActionLink("Add Car", "Add", "Car")
 
-<table class="table table-bordered table-hover">
-    <thead>
-        <th>Car</th>
-        <th>Name</th>
-        <th>Engine</th>
-        <th>Horsepower</th>
-        <th>Manufactured</th>
-    </thead>
-</table>
+@* Verific daca modelul este ok**@
+@if (Model != null)
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Car</th>
+                <th>Engine</th>
+                <th>Horsepower</th>
+                <th>Manufactured</th>
+            </tr>
+        </thead>
 
-<tbody>
-    @foreach (var car in Model)
-    {
-        if (car == null)
-        {
-            continue;
-        }
-        <tr>
-            <td>@Html.ActionLink(car.Name, "Edit/" + car.Id.ToString(), "Car")</td>
-            @{ 
-                @* Daca  *@
-            var engine = car.HasThermalEngine ? "Thermal" : "Electic";
-            if (car.IsHybrid)
+        <tbody>
+            @foreach (var car in Model)
             {
-                engine += " Hybrid";
-            }
-            engine += (" " + car.CylindricalCapacity + "cmc");
-            }
-            <td>@engine</td>
-            <td>@car.HorsePower</td>
-            <td>@car.YearManufactured</td>
-        </tr>
-    }
-</tbody>
-
+                if (car == null)
+                {
+                    continue;
+                }
+            <tr>
+                @{
+                    var carName = car.Manufacturer + " " + car.Series;
+                }
+                <td>@Html.ActionLink(carName, "Edit/" + car.Id, "Car")</td>
+                @{
+                    @* Creem un singur string pt proprietatile motorului  *@
+                var engine = car.HasThermalEngine ? "Thermal" : "Electic";
+                if (engine == "Thermal")
+                {
+                    if (car.IsHybrid)
+                    {
+                        engine += " Hybrid";
+                    }
+                    engine += (" " + car.CylindricalCapacity + "cmc");
+                }
+                }
+                <td>@engine</td>
+                <td>@car.HorsePower</td>
+                <td>@car.YearManufactured</td>
+                <td>@Html.ActionLink("Delete", "Delete/" + car.Id, "Car")</td>
+            </tr>
+             }
+        </tbody>
+    </table>
+ }

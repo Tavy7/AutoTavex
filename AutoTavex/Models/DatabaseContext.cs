@@ -6,10 +6,13 @@ using System.Data.Entity;
 
 namespace AutoTavex.Models
 {
-    public class DatabaseContext:DbContext
+    public class DatabaseContext : DbContext
     {
         public DbSet<Car> Cars { get; set; }
 
-        public DatabaseContext() : base("TavexDatabase") { }
+        public DatabaseContext() : base("TavexDatabase")
+        {
+            //Database.SetInitializer(new DropCreateDatabaseAlways<DatabaseContext>());
+        }
     }
 }
