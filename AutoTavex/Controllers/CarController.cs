@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -29,13 +28,10 @@ namespace AutoTavex.Controllers
             return View(cars);
         }
 
-        // Get: Add
+        [Route("Car/Add/")]
         public ActionResult Add()
         {
-            var viewModel = new CarFormViewmodel
-            {
-                Title = "Add"
-            };
+            var viewModel = new CarFormViewmodel(0);
 
             return View("Form", viewModel);
         }
@@ -62,12 +58,9 @@ namespace AutoTavex.Controllers
                 return View("Form", viewModel);
             }
 
-            car.Image = "~\\Content\\Images\\" + car.Image;
-
             if (image != null)
             {
-                image.SaveAs(HttpContext.Server.MapPath("~\\Cotnent\\Images\\" + image.FileName));
-                car.Image = "~\\Content\\Images" + image.FileName;
+                image.SaveAs(HttpContext.Server.MapPath("~\\Content\\Images\\" + image.FileName));
             }
 
             if (car.Id == 0)
@@ -88,7 +81,8 @@ namespace AutoTavex.Controllers
                 carInDb.YearManufactured = car.YearManufactured;
                 carInDb.HasThermalEngine = car.HasThermalEngine;
                 carInDb.IsHybrid = car.IsHybrid;
-                carInDb.Image = car.Image;
+                carInDb.Image = "~\\Content\\Images\\" + car.Image;
+                carInDb.ExtraDetails = car.ExtraDetails;
             }
 
             _context.SaveChanges();
@@ -96,6 +90,7 @@ namespace AutoTavex.Controllers
         }
 
         // Doar pt admin
+        [Route("Car/Edit/{id}")]
         public ActionResult Edit(int id)
         {
             var car = _context.Cars.SingleOrDefault(c => c.Id == id);
@@ -114,6 +109,7 @@ namespace AutoTavex.Controllers
             return View("Form", viewModel);
         }
 
+        [Route("Car/Delete/{id}")]
         public ActionResult Delete(int id)
         {
             var car = _context.Cars.SingleOrDefault(c => c.Id == id);
@@ -123,6 +119,7 @@ namespace AutoTavex.Controllers
             return RedirectToAction("Index");
         }
 
+        [Route("Car/Details/{id}")]
         public ActionResult Details(int? id)
         {
             if (id is null)

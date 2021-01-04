@@ -155,10 +155,24 @@
     <Compile Include="Migrations\202101041902005_CarHasMoreProps.designer.cs">
       <DependentUpon>202101041902005_CarHasMoreProps.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101042012550_carYearManufacturedIsNullable.cs" />
+    <Compile Include="Migrations\202101042012550_carYearManufacturedIsNullable.designer.cs">
+      <DependentUpon>202101042012550_carYearManufacturedIsNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101042200511_newTable.cs" />
+    <Compile Include="Migrations\202101042200511_newTable.designer.cs">
+      <DependentUpon>202101042200511_newTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101042219383_MotoCreated.cs" />
+    <Compile Include="Migrations\202101042219383_MotoCreated.designer.cs">
+      <DependentUpon>202101042219383_MotoCreated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
+    <Compile Include="Models\Max15YOldExceptSpecial.cs" />
     <Compile Include="Models\Moto.cs" />
+    <Compile Include="Models\SpecialCars.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CarFormViewmodel.cs" />
   </ItemGroup>
@@ -338,6 +352,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101041902005_CarHasMoreProps.resx">
       <DependentUpon>202101041902005_CarHasMoreProps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101042012550_carYearManufacturedIsNullable.resx">
+      <DependentUpon>202101042012550_carYearManufacturedIsNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101042200511_newTable.resx">
+      <DependentUpon>202101042200511_newTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101042219383_MotoCreated.resx">
+      <DependentUpon>202101042219383_MotoCreated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

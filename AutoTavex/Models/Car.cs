@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace AutoTavex.Models
 {
     public class Car
     {
-        [Key]
         public int Id { get; set; }
         [Required(ErrorMessage = "Enter Car Manufacturer")]
         public string Manufacturer { get; set; }
@@ -27,13 +22,14 @@ namespace AutoTavex.Models
         [Range(1, 1000, ErrorMessage="Must be a natural number.")]
         public short? HorsePower { get; set; }
         // Validare custom: nu vindem masini mai vechi de 15 ani decat daca au motor mare
-        [Range(1950, 2030, ErrorMessage="Too old.")]
-        public short YearManufactured { get; set; }
+        [Max15YOldExceptSpecial]
+        public short? YearManufactured { get; set; }
         [StringLength(17, MinimumLength = 17, ErrorMessage = "VIN needs to have 17 characthers.")]
         [Required(ErrorMessage="VIN is mandatory.")]
         public string Vin { get; set; }
         [Display(Name ="Upload picture")]
         public string Image { get; set; }
+        public string ExtraDetails { get; set; }
 
         [Range(0, int.MaxValue, ErrorMessage = "Must be a positive number.")]
         public float Price { get; set; }

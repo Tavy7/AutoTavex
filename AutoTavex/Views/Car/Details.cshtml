@@ -7,7 +7,15 @@
 
 <h2>@Model.Manufacturer @Model.Series</h2>
 <br />
-<img class="carDetails" src="@Url.Content(Model.Image)" width="350" />
+
+@{ 
+    var imagePath = "\\Content\\Images\\no-image.png";
+    if (Model.Image != null)
+    {
+        imagePath = Url.Content(Model.Image);
+    }
+}
+<img class="carDetails" src="@imagePath" width="350" />
 <ul>
     @{
         @* Creem un singur string pt proprietatile motorului  *@
@@ -34,8 +42,16 @@
 
     <li>@gearbox</li>
     <li>@Model.Transmission</li>
-    <li>@Model.TachometerValue</li>
+    <li>@Model.TachometerValue km</li>
     <li>@Model.Vin</li>
+    @{ 
+        var detailsText = "No extra details";
+        if (Model.ExtraDetails != "")
+        {
+            detailsText = Model.ExtraDetails;
+        }
+    }
+    <li>@detailsText</li>
 </ul>
 
 <h3>$@Model.Price</h3>

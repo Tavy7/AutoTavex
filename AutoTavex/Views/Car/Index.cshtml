@@ -17,6 +17,7 @@
                 <th>Engine</th>
                 <th>Horsepower</th>
                 <th>Manufactured</th>
+                <th>Tachometer Value</th>
             </tr>
         </thead>
 
@@ -47,6 +48,7 @@
                 <td>@engine</td>
                 <td>@car.HorsePower</td>
                 <td>@car.YearManufactured</td>
+                <td>@car.TachometerValue</td>
                 <td>@Html.ActionLink("Delete", "Delete/" + car.Id, "Car")</td>
                 <td>@Html.ActionLink("Details", "Details/" + car.Id, "Car")</td>
             </tr>

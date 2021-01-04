@@ -11,8 +11,10 @@
 @using (Html.BeginForm("Save", "Car", FormMethod.Post)) // ActionName, ControllerName
 {
     @Html.ValidationSummary(true, "Please fix the following errors.")
-    @Html.HiddenFor(c => c.Car.Id)
     <div class="form-group">
+
+        @Html.HiddenFor(c => c.Car.Id)
+
         @Html.LabelFor(c => c.Car.Manufacturer)
         @Html.TextBoxFor(c => c.Car.Manufacturer, new { @class = "form-control" })
         @Html.ValidationMessageFor(c => c.Car.Manufacturer)
@@ -87,6 +89,10 @@
         @Html.ValidationMessageFor(c => c.Car.Price)
     </div>
 
+    <div class="form-group">
+        @Html.LabelFor(c => c.Car.ExtraDetails)
+        @Html.TextBoxFor(c => c.Car.ExtraDetails, new { @class = "form-control" })
+    </div>
     <br />
     <br />
 
