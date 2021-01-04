@@ -42,7 +42,7 @@ namespace AutoTavex.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Save(Car car)
+        public ActionResult Save(Car car, HttpPostedFileBase image)
         {
             // MEREU E INVALID DESI DATELE SUNT OKK
             if (!ModelState.IsValid)
@@ -54,7 +54,20 @@ namespace AutoTavex.Controllers
                     Car = car
                 };
 
+                if (car.Id > 0)
+                {
+                    viewModel.Title = CarFormViewmodel.Edit;
+                }
+
                 return View("Form", viewModel);
+            }
+
+            car.Image = "~\\Content\\Images\\" + car.Image;
+
+            if (image != null)
+            {
+                image.SaveAs(HttpContext.Server.MapPath("~\\Cotnent\\Images\\" + image.FileName));
+                car.Image = "~\\Content\\Images" + image.FileName;
             }
 
             if (car.Id == 0)
@@ -75,6 +88,7 @@ namespace AutoTavex.Controllers
                 carInDb.YearManufactured = car.YearManufactured;
                 carInDb.HasThermalEngine = car.HasThermalEngine;
                 carInDb.IsHybrid = car.IsHybrid;
+                carInDb.Image = car.Image;
             }
 
             _context.SaveChanges();
@@ -109,6 +123,17 @@ namespace AutoTavex.Controllers
             return RedirectToAction("Index");
         }
 
-        // De facut functie pentru details
+        public ActionResult Details(int? id)
+        {
+            if (id is null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var car = _context.Cars.SingleOrDefault(c => c.Id == id);
+            
+
+            return View(car);
+        }
     }
 }

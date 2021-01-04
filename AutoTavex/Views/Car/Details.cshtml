@@ -1,0 +1,46 @@
+﻿@model AutoTavex.Models.Car
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.Manufacturer @Model.Series</h2>
+<br />
+<img class="carDetails" src="@Url.Content(Model.Image)" width="350" />
+<ul>
+    @{
+        @* Creem un singur string pt proprietatile motorului  *@
+        var engine = Model.HasThermalEngine ? "Thermal" : "Electic";
+        if (engine == "Thermal")
+        {
+            if (Model.IsHybrid)
+            {
+                engine += " Hybrid";
+            }
+            engine += (" " + Model.CylindricalCapacity + "cmc");
+        }
+    }
+    <li>Engine: @engine</li>
+    <li>@Model.HorsePower horsepower</li>
+    <li>Year Manufactured: @Model.YearManufactured</li>
+    @{
+        var gearbox = "Automatic";
+        if (Model.IsManual)
+        {
+            gearbox = "Manual";
+        }
+    }
+
+    <li>@gearbox</li>
+    <li>@Model.Transmission</li>
+    <li>@Model.TachometerValue</li>
+    <li>@Model.Vin</li>
+</ul>
+
+<h3>$@Model.Price</h3>
+
+<br />
+<br />
+<p>User name is: </p>
+<p>Message user</p>

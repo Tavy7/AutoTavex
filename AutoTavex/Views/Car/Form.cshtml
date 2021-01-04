@@ -25,6 +25,12 @@
     </div>
 
     <div class="form-group">
+        @Html.LabelFor(c => c.Car.TachometerValue)
+        @Html.TextBoxFor(c => c.Car.TachometerValue, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Car.TachometerValue)
+    </div>
+
+    <div class="form-group">
         @Html.LabelFor(c => c.Car.Vin)
         @Html.TextBoxFor(c => c.Car.Vin, new { @class = "form-control" })
         @Html.ValidationMessageFor(c => c.Car.Vin)
@@ -46,24 +52,44 @@
         @Html.ValidationMessageFor(c => c.Car.YearManufactured)
     </div>
 
+    <div class="form-group">
+        @Html.LabelFor(c => c.Car.Transmission)
+        @Html.TextBoxFor(c => c.Car.Transmission, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Car.Transmission)
+    </div>
+
     <div class="checkbox">
         <label>
             @Html.CheckBoxFor(c => c.Car.HasThermalEngine) Has Thermal Engine
         </label>
     </div>
+
     <div class="checkbox">
         <label>
             @Html.CheckBoxFor(m => m.Car.IsHybrid) Is Hybrid
         </label>
     </div>
 
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.Car.IsManual) Is Manual
+        </label>
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Car.Image)
+        @Html.TextBoxFor(m => m.Car.Image, new { type = "file", multiple = "multiple", accept = "image/jpeg,  image/jpg" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Car.Price)
+        @Html.TextBoxFor(c => c.Car.Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Car.Price)
+    </div>
+
+    <br />
+    <br />
+
     @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-primary">Save</button>
-}
-
-
-@section scripts
-{
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
 }
