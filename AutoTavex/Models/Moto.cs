@@ -14,10 +14,9 @@ namespace AutoTavex.Models
         [Required(ErrorMessage = "Please enter mileage.")]
         [Range(1, int.MaxValue, ErrorMessage = "Must be a natural number.")]
         public int TachometerValue { get; set; }
-
         public short? CylindricalCapacity { get; set; }
 
-        [Range(1, 1000, ErrorMessage = "Must be a natural number.")]
+        [Range(1, 500, ErrorMessage = "Must be a natural number.")]
         public short? HorsePower { get; set; }
 
         public string Caroserie { get; set; }

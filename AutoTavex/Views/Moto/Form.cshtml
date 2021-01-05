@@ -1,0 +1,84 @@
+﻿@model AutoTavex.ViewModels.MotoFormViewModel
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@{
+    ViewBag.Title = @Model.Title;
+}
+
+<h2>@Model.Title Moto</h2>
+
+@using (Html.BeginForm("Save", "Moto", FormMethod.Post)) // ActionName, ControllerName
+{
+    @Html.ValidationSummary(true, "Please fix the following errors.")
+    <div class="form-group">
+        
+        @Html.HiddenFor(c => c.Moto.Id)
+
+        @Html.LabelFor(c => c.Moto.Manufacturer)
+        @Html.TextBoxFor(c => c.Moto.Manufacturer, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Moto.Manufacturer)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Moto.Series)
+        @Html.TextBoxFor(c => c.Moto.Series, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Moto.Series)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Moto.TachometerValue)
+        @Html.TextBoxFor(c => c.Moto.TachometerValue, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Moto.TachometerValue)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Moto.Vin)
+        @Html.TextBoxFor(c => c.Moto.Vin, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Moto.Vin)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Moto.CylindricalCapacity)
+        @Html.TextBoxFor(c => c.Moto.CylindricalCapacity, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Moto.CylindricalCapacity)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Moto.HorsePower)
+        @Html.TextBoxFor(c => c.Moto.HorsePower, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Moto.YearManufactured)
+        @Html.TextBoxFor(c => c.Moto.YearManufactured, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Moto.YearManufactured)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Moto.Caroserie)
+        @Html.TextBoxFor(c => c.Moto.Caroserie, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Moto.Caroserie)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Moto.Image)
+        @Html.TextBoxFor(m => m.Moto.Image, new { type = "file", multiple = "multiple", accept = "image/jpeg,  image/jpg" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Moto.Price)
+        @Html.TextBoxFor(c => c.Moto.Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Moto.Price)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Moto.ExtraDetails)
+        @Html.TextBoxFor(c => c.Moto.ExtraDetails, new { @class = "form-control" })
+    </div>
+    <br />
+    <br />
+
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}

@@ -31,13 +31,16 @@ textarea {
     border: 2px solid red;
 }
 
-.carDetails {
+.imageDetails1 {
     position: fixed;
     right: 25%;
     top: 10%;
-
     border-radius: 8px;
     padding: 5px;
     width: 350px;
     height: auto;
+}
+
+.textDetails {
+    max-width: 60%;
 }

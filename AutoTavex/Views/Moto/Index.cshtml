@@ -1,0 +1,46 @@
+﻿@model IEnumerable<AutoTavex.Models.Moto>
+
+@{
+    ViewBag.Title = "Motorcyles";
+}
+
+<h2>Motorcycles</h2>
+@Html.ActionLink("Add Motorcycle", "Add", "Moto")
+
+@* Verific daca modelul este ok**@
+@if (Model != null)
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Motorcycle</th>
+                <th>Engine</th>
+                <th>Horsepower</th>
+                <th>Manufactured</th>
+                <th>Tachometer Value</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var moto in Model)
+            {
+                if (moto == null)
+                {
+                    continue;
+                }
+                <tr>
+                    @{
+                        var motoName = moto.Manufacturer + " " + moto.Series;
+                    }
+                    <td>@Html.ActionLink(motoName, "Edit/" + moto.Id, "Moto")</td>
+                    <td>@moto.CylindricalCapacity</td>
+                    <td>@moto.HorsePower</td>
+                    <td>@moto.YearManufactured</td>
+                    <td>@moto.TachometerValue</td>
+                    <td>@Html.ActionLink("Delete", "Delete/" + moto.Id, "Moto")</td>
+                    <td>@Html.ActionLink("Details", "Details/" + moto.Id, "Moto")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
