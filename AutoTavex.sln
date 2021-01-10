@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoTavex", "AutoTavex\AutoTavex.csproj", "{46DA1932-8603-4B82-BCA3-8EEA28A2EDE4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoTavex", "AutoTavex\AutoTavex.csproj", "{1CFDC23F-878C-48EC-99E5-6E33210D6CD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{46DA1932-8603-4B82-BCA3-8EEA28A2EDE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{46DA1932-8603-4B82-BCA3-8EEA28A2EDE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{46DA1932-8603-4B82-BCA3-8EEA28A2EDE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{46DA1932-8603-4B82-BCA3-8EEA28A2EDE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CFDC23F-878C-48EC-99E5-6E33210D6CD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CFDC23F-878C-48EC-99E5-6E33210D6CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CFDC23F-878C-48EC-99E5-6E33210D6CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CFDC23F-878C-48EC-99E5-6E33210D6CD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {BDA2E90C-E959-46E1-898C-87EA2045C367}
+		SolutionGuid = {F24E312C-8DA9-4D44-9301-45D639636839}
 	EndGlobalSection
 EndGlobal

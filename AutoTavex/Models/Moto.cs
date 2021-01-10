@@ -13,7 +13,9 @@ namespace AutoTavex.Models
 
         [Required(ErrorMessage = "Please enter mileage.")]
         [Range(1, int.MaxValue, ErrorMessage = "Must be a natural number.")]
+        [Display(Name = "Tachometer Value")]
         public int TachometerValue { get; set; }
+        [Display(Name = "Cylindrical Capacity")]
         public short? CylindricalCapacity { get; set; }
 
         [Range(1, 500, ErrorMessage = "Must be a natural number.")]
@@ -21,6 +23,7 @@ namespace AutoTavex.Models
 
         public string Caroserie { get; set; }
 
+        [Display(Name = "Year Manufactured")]
         public short? YearManufactured { get; set; }
 
         [StringLength(17, MinimumLength = 17, ErrorMessage = "VIN needs to have 17 characthers.")]
@@ -28,6 +31,7 @@ namespace AutoTavex.Models
 
         public string Image { get; set; }
 
+        [Display(Name = "Extra Details")]
         public string ExtraDetails { get; set; }
 
         [Range(0, int.MaxValue, ErrorMessage = "Must be a positive number.")]

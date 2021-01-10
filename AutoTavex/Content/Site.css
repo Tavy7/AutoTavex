@@ -1,6 +1,6 @@
 ﻿body {
     padding-top: 50px;
-    padding-bottom: 25px;
+    padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,26 +21,4 @@ input,
 select,
 textarea {
     max-width: 280px;
-}
-
-.field-validation-error {
-    color: red;
-}
-
-.input-validation-error {
-    border: 2px solid red;
-}
-
-.imageDetails1 {
-    position: fixed;
-    right: 25%;
-    top: 10%;
-    border-radius: 8px;
-    padding: 5px;
-    width: 350px;
-    height: auto;
-}
-
-.textDetails {
-    max-width: 60%;
 }
