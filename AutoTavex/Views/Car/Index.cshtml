@@ -28,31 +28,31 @@
                 {
                     continue;
                 }
-            <tr>
-                @{
-                    var carName = car.Manufacturer + " " + car.Series;
-                }
-                <td>@Html.ActionLink(carName, "Edit/" + car.Id, "Car")</td>
-                @{
-                    @* Creem un singur string pt proprietatile motorului  *@
-                var engine = car.HasThermalEngine ? "Thermal" : "Electic";
-                if (engine == "Thermal")
-                {
-                    if (car.IsHybrid)
-                    {
-                        engine += " Hybrid";
+                <tr>
+                    @{
+                        var carName = car.Manufacturer + " " + car.Series;
                     }
-                    engine += (" " + car.CylindricalCapacity + "cmc");
-                }
-                }
-                <td>@engine</td>
-                <td>@car.HorsePower</td>
-                <td>@car.YearManufactured</td>
-                <td>@car.TachometerValue</td>
-                <td>@Html.ActionLink("Delete", "Delete/" + car.Id, "Car")</td>
-                <td>@Html.ActionLink("Details", "Details/" + car.Id, "Car")</td>
-            </tr>
-             }
+                    <td>@Html.ActionLink(carName, "Edit/" + car.Id, "Car")</td>
+                    @{
+                        @* Creem un singur string pt proprietatile motorului  *@
+                        var engine = car.HasThermalEngine ? "Thermal" : "Electic";
+                        if (engine == "Thermal")
+                        {
+                            if (car.IsHybrid)
+                            {
+                                engine += " Hybrid";
+                            }
+                            engine += (" " + car.CylindricalCapacity + "cmc");
+                        }
+                    }
+                    <td>@engine</td>
+                    <td>@car.HorsePower</td>
+                    <td>@car.YearManufactured</td>
+                    <td>@car.TachometerValue</td>
+                    <td>@Html.ActionLink("Delete", "Delete/" + car.Id, "Car")</td>
+                    <td>@Html.ActionLink("Details", "Details/" + car.Id, "Car")</td>
+                </tr>
+            }
         </tbody>
     </table>
- }
+}

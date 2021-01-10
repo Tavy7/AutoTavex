@@ -168,8 +168,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MotoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -188,6 +190,8 @@
     <Compile Include="Models\SpecialCars.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CarFormViewmodel.cs" />
+    <Compile Include="ViewModels\MotoFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\TavexDatabase.mdf" />
@@ -198,6 +202,18 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\Audi_A4.jpg" />
+    <Content Include="Content\Images\BMW_5_Series.jpg" />
+    <Content Include="Content\Images\BMW_F900XR.jpg" />
+    <Content Include="Content\Images\Dacia_Logan.jpg" />
+    <Content Include="Content\Images\Mercedes_C-Klasse.JPG" />
+    <Content Include="Content\Images\no-image.png" />
+    <Content Include="Content\Images\Renault_Megane.jpg" />
+    <Content Include="Content\Images\Tesla_Model3.jpg" />
+    <Content Include="Content\Images\Tesla_ModelS.jpg" />
+    <Content Include="Content\Images\Tesla_ModelX.jpg" />
+    <Content Include="Content\Images\Tesla_ModelY.jpg" />
+    <Content Include="Content\Images\Toyota_Celica.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -249,6 +265,12 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Car\Index.cshtml" />
+    <Content Include="Views\Car\Details.cshtml" />
+    <Content Include="Views\Car\Form.cshtml" />
+    <Content Include="Views\Moto\Index.cshtml" />
+    <Content Include="Views\Moto\Form.cshtml" />
+    <Content Include="Views\Moto\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202101102220396_InitialMigration.resx">
@@ -268,6 +290,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

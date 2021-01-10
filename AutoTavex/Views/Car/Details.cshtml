@@ -8,7 +8,7 @@
 <h2>@Model.Manufacturer @Model.Series</h2>
 <br />
 
-@{ 
+@{
     var imagePath = "\\Content\\Images\\no-image.png";
     if (Model.Image != null)
     {
@@ -46,7 +46,7 @@
     <li>@Model.Transmission</li>
     <li>@Model.TachometerValue km</li>
     <li>@Model.Vin</li>
-    @{ 
+    @{
         var detailsText = "No extra details";
         if (Model.ExtraDetails != "")
         {

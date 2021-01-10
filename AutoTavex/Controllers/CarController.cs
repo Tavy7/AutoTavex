@@ -40,7 +40,6 @@ namespace AutoTavex.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Save(Car car, HttpPostedFileBase image)
         {
-            // MEREU E INVALID DESI DATELE SUNT OKK
             if (!ModelState.IsValid)
             {
                 // Daca modelul nu e valid ne intoarcem pe pagina

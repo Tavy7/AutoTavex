@@ -24,7 +24,7 @@ namespace AutoTavex
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/superheroBootstrap.min.css",
-                      "~/Content/site.css"));
+                      "~/Content/Site.css"));
         }
     }
 }

@@ -13,7 +13,7 @@ namespace AutoTavex.ViewModels
 
         public const string Add = "Add";
         public const string Edit = "Edit";
-    
+
         public CarFormViewmodel(int id = 0)
         {
             Title = Add;
