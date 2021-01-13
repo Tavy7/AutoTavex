@@ -21,7 +21,7 @@ namespace AutoTavex.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("aspnet-AutoTavex-20210111121440", throwIfV1Schema: false)
         {
         }
 

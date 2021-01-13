@@ -25,10 +25,16 @@ namespace AutoTavex.Controllers
         public ActionResult Index()
         {
             var moto = _context.Moto;
-            return View(moto);
+            if (User.IsInRole(RoleName.CanManageVehicles))
+            {
+                return View("List", moto);
+            }
+
+            return View("ReadOnlyList", moto);
         }
 
         [Route("Moto/Add/")]
+        [Authorize(Roles = RoleName.CanManageVehicles)]
         public ActionResult Add()
         {
             var viewModel = new MotoFormViewModel(0);
@@ -89,6 +95,7 @@ namespace AutoTavex.Controllers
 
         // Doar pt admin
         [Route("Moto/Edit/{id}")]
+        [Authorize(Roles = RoleName.CanManageVehicles)]
         public ActionResult Edit(int id)
         {
             var moto = _context.Moto.SingleOrDefault(m => m.Id == id);
@@ -108,6 +115,7 @@ namespace AutoTavex.Controllers
         }
 
         [Route("Moto/Delete/{id}")]
+        [Authorize(Roles = RoleName.CanManageVehicles)]
         public ActionResult Delete(int id)
         {
             var moto = _context.Moto.SingleOrDefault(m => m.Id == id);

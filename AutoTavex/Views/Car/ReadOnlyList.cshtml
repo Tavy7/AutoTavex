@@ -1,0 +1,55 @@
+﻿@model IEnumerable<AutoTavex.Models.Car>
+
+@{
+    ViewBag.Title = "Cars";
+}
+
+<h2>Cars</h2>
+
+@* Verific daca modelul este ok**@
+@if (Model != null)
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Car</th>
+                <th>Engine</th>
+                <th>Horsepower</th>
+                <th>Manufactured</th>
+                <th>Tachometer Value</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var car in Model)
+            {
+                if (car == null)
+                {
+                    continue;
+                }
+                <tr>
+                    @{
+                        var carName = car.Manufacturer + " " + car.Series;
+                    }
+                    <td>@Html.ActionLink(carName, "Details/" + car.Id, "Car")</td>
+                    @{
+                        @* Creem un singur string pt proprietatile motorului  *@
+                        var engine = car.HasThermalEngine ? "Thermal" : "Electic";
+                        if (engine == "Thermal")
+                        {
+                            if (car.IsHybrid)
+                            {
+                                engine += " Hybrid";
+                            }
+                            engine += (" " + car.CylindricalCapacity + "cmc");
+                        }
+                    }
+                    <td>@engine</td>
+                    <td>@car.HorsePower</td>
+                    <td>@car.YearManufactured</td>
+                    <td>@car.TachometerValue</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

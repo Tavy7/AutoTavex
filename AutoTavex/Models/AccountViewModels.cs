@@ -109,4 +109,9 @@ namespace AutoTavex.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
+    public static class RoleName
+    {
+         public const string CanManageVehicles = "CanManageVehicles";
+    }
 }
