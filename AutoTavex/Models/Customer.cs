@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace AutoTavex.Models
 {
@@ -14,5 +15,7 @@ namespace AutoTavex.Models
         public string CNP { get; set; }
         public bool IsOver18 { get; set; }
         public string Email { get; set; }
+        public IEnumerable<int> CarsId { get; set; }
+        public IEnumerable<int> MotosId { get; set; }
     }
 }

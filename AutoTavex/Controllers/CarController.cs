@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Collections.Generic;
 using AutoTavex.Models;
 using AutoTavex.ViewModels;
 
@@ -96,6 +97,7 @@ namespace AutoTavex.Controllers
                 carInDb.IsHybrid = car.IsHybrid;
                 carInDb.Image = car.Image;
                 carInDb.ExtraDetails = car.ExtraDetails;
+                carInDb.Price = car.Price;
             }
 
             _context.SaveChanges();
@@ -148,7 +150,6 @@ namespace AutoTavex.Controllers
             return View(car);
         }
 
-        [HttpPost]
         public ActionResult Buy(int id)
         {
             string email = User.Identity.Name;
@@ -176,12 +177,21 @@ namespace AutoTavex.Controllers
 
             // Daca modelul e valid adaugam asigurarea in baza de date
             _context.Insurances.Add(insurance);
-            _context.SaveChanges();
             // Modificam pretul masinii in negativ pentru a nu mai aparea la vanzare
             // dar ca sa ramana in baza de date
+            _context.Cars.Single(car => car.Id == insurance.CarId).Price = 0;
+           
+            // Adaugam id ul masini in lista userului
+            var userInDb = _context.Customers.Single(customer => customer.CNP == insurance.CustomerCNP);
+            List<int> userCars = (List<int>)userInDb.CarsId;
+            
+            if (userCars is null)
+            {
+                userCars = new List<int>();
+            }
 
-            var carInDb = _context.Cars.Single(car => car.Id == insurance.CarId);
-            carInDb.Price = 0;
+            userCars.Add(insurance.CarId);
+            userInDb.CarsId = (IEnumerable<int>)userCars;
             _context.SaveChanges();
 
             return RedirectToAction("Index");

@@ -10,6 +10,7 @@ namespace AutoTavex.Models
         public DbSet<Moto> Moto { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Insurance> Insurances { get; set; }
+        public DbSet<VehicleEvent> Events { get; set; }
 
         public DatabaseContext() : base("TavexDatabase")
         {

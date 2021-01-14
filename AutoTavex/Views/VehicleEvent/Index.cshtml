@@ -1,0 +1,119 @@
+﻿@model AutoTavex.Models.VehicleEvent
+
+@{
+    ViewBag.Title = "Vehicle event event";
+}
+
+<h2>Vehicle event</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>See our special cars</h2>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Car</th>
+                    <th>Engine</th>
+                    <th>Horsepower</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var car in Model.EventCars)
+                {
+                    if (car == null)
+                    {
+                        continue;
+                    }
+
+                <tr>
+                    @{
+                        var carName = car.Manufacturer + " " + car.Series;
+                    }
+                    <td>@carName</td>
+
+                    @{
+                        @* Creem un singur string pt proprietatile motorului  *@
+                        var engine = car.HasThermalEngine ? "Thermal" : "Electic";
+                        if (engine == "Thermal")
+                        {
+                            if (car.IsHybrid)
+                            {
+                                engine += " Hybrid";
+                            }
+                            engine += (" " + car.CylindricalCapacity + "cmc");
+                        }
+                    }
+                    <td>@engine</td>
+                    <td>@car.HorsePower </td>
+                    <td>@Html.ActionLink("Details", "Details/" + car.Id, "Car")</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-6">
+        <h2>Enter your vehicle in our contest!</h2>
+        <p>We will organize drag races, but you will earn points for style too.</p>
+       
+        @{
+            var numberOfEntries = 0;
+        }
+
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Car</th>
+                    <th>Engine</th>
+                    <th>Horsepower</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (Model.CustomerVehicles != null)
+                {
+                    foreach (var customer in Model.CustomerVehicles)
+                    {
+                        if (customer.CarsId == null)
+                        {
+                            continue;
+                        }
+                        foreach (var carIndex in customer.CarsId)
+                        {
+                            var car = Model.EventCars.ElementAt(carIndex);
+                            if (car == null)
+                            {
+                                continue;
+                            }
+                            numberOfEntries++;
+                            <tr>
+                                @{
+                                    var carName = car.Manufacturer + " " + car.Series;
+                                }
+                                <td>@carName</td>
+
+                                @{
+                                    @* Creem un singur string pt proprietatile motorului  *@
+                                    var engine = car.HasThermalEngine ? "Thermal" : "Electic";
+                                    if (engine == "Thermal")
+                                    {
+                                        if (car.IsHybrid)
+                                        {
+                                            engine += " Hybrid";
+                                        }
+                                        engine += (" " + car.CylindricalCapacity + "cmc");
+                                    }
+                                }
+                                <td>@engine</td>
+                                <td>@car.HorsePower </td>
+                                <td>@Html.ActionLink("Details", "Details/" + car.Id, "Car")</td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+        <p>@numberOfEntries of entries yet, <a href="VehicleEvent/EnterContest"> click here to enter your vehicle in the contest.</a></p>
+    </div>
+</div>
