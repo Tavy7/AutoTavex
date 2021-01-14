@@ -8,6 +8,8 @@ namespace AutoTavex.Models
         public DbSet<Car> Cars { get; set; }
         public DbSet<SpecialCars> SpecialCars { get; set; }
         public DbSet<Moto> Moto { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Insurance> Insurances { get; set; }
 
         public DatabaseContext() : base("TavexDatabase")
         {

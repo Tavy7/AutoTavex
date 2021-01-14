@@ -60,5 +60,8 @@
 
 <br />
 <br />
-<p>User name is: </p>
-<p>Message user</p>
+
+@using (Html.BeginForm("Buy/" + Model.Id, "Car", FormMethod.Post)) // ActionName, ControllerName
+{
+    <button type="submit" class="btn btn-primary">Buy</button>
+}

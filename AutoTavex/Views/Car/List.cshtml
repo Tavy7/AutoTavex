@@ -28,9 +28,15 @@
                 {
                     continue;
                 }
+
                 <tr>
                     @{
                         var carName = car.Manufacturer + " " + car.Series;
+
+                        if (car.Price == 0)
+                        {
+                            carName += " SOLD";
+                        }
                     }
                     <td>@Html.ActionLink(carName, "Edit/" + car.Id, "Car")</td>
                     @{

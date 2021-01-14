@@ -7,13 +7,13 @@ namespace AutoTavex.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class SeedUsers : IMigrationMetadata
+    public sealed partial class InsuranceTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(SeedUsers));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InsuranceTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "202101131728212_SeedUsers"; }
+            get { return "202101132333165_InsuranceTable"; }
         }
         
         string IMigrationMetadata.Source

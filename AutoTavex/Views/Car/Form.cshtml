@@ -11,9 +11,8 @@
 @using (Html.BeginForm("Save", "Car", FormMethod.Post)) // ActionName, ControllerName
 {
     @Html.ValidationSummary(true, "Please fix the following errors.")
+    @Html.HiddenFor(c => c.Car.Id)
     <div class="form-group">
-
-        @Html.HiddenFor(c => c.Car.Id)
 
         @Html.LabelFor(c => c.Car.Manufacturer)
         @Html.TextBoxFor(c => c.Car.Manufacturer, new { @class = "form-control" })

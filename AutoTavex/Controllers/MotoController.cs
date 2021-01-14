@@ -45,7 +45,6 @@ namespace AutoTavex.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Save(Moto moto, HttpPostedFileBase image)
         {
-            // MEREU E INVALID DESI DATELE SUNT OKK
             if (!ModelState.IsValid)
             {
                 // Daca modelul nu e valid ne intoarcem pe pagina
@@ -65,7 +64,15 @@ namespace AutoTavex.Controllers
 
             if (image != null)
             {
-                image.SaveAs(HttpContext.Server.MapPath("~\\Content\\Images\\" + image.FileName));
+                string imagePath = "~\\Content\\Images\\" + image.FileName;
+                image.SaveAs(HttpContext.Server.MapPath(imagePath));
+                moto.Image = imagePath;
+            }
+
+            if (moto.Image != null && moto.Image[0] != '~')
+            {
+                string path = "~\\Content\\Images\\" + moto.Image.ToString();
+                moto.Image = path;
             }
 
             if (moto.Id == 0)

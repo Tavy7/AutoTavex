@@ -6,6 +6,7 @@
 
 <h2>Cars</h2>
 
+@Html.ActionLink("Add Car For SALE", "Add", "Car")
 @* Verific daca modelul este ok**@
 @if (Model != null)
 {
@@ -27,6 +28,12 @@
                 {
                     continue;
                 }
+
+                if (car.Price == 0)
+                {
+                    continue;
+                }
+
                 <tr>
                     @{
                         var carName = car.Manufacturer + " " + car.Series;

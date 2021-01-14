@@ -35,6 +35,10 @@ namespace AutoTavex.Models
         public string ExtraDetails { get; set; }
 
         [Range(0, int.MaxValue, ErrorMessage = "Must be a positive number.")]
+        [Required(ErrorMessage = "Price is required.")]
         public float Price { get; set; }
+
+        public Insurance Insurance;
+        public int InsuranceId;
     }
 }

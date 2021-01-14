@@ -65,7 +65,15 @@ namespace AutoTavex.Controllers
 
             if (image != null)
             {
-                image.SaveAs(HttpContext.Server.MapPath("~\\Content\\Images\\" + image.FileName));
+                string imagePath = "~\\Content\\Images\\" + image.FileName;
+                image.SaveAs(HttpContext.Server.MapPath(imagePath));
+                car.Image = imagePath;
+            }
+
+            if (car.Image != null && car.Image[0] != '~')
+            {
+                string path = "~\\Content\\Images\\" + car.Image.ToString();
+                car.Image = path;
             }
 
             if (car.Id == 0)
@@ -86,7 +94,7 @@ namespace AutoTavex.Controllers
                 carInDb.YearManufactured = car.YearManufactured;
                 carInDb.HasThermalEngine = car.HasThermalEngine;
                 carInDb.IsHybrid = car.IsHybrid;
-                carInDb.Image = "~\\Content\\Images\\" + car.Image;
+                carInDb.Image = car.Image;
                 carInDb.ExtraDetails = car.ExtraDetails;
             }
 
@@ -129,7 +137,7 @@ namespace AutoTavex.Controllers
         [Route("Car/Details/{id}")]
         public ActionResult Details(int? id)
         {
-            if (id is null)
+            if (!id.HasValue)
             {
                 return RedirectToAction("Index");
             }
@@ -138,6 +146,45 @@ namespace AutoTavex.Controllers
             
 
             return View(car);
+        }
+
+        [HttpPost]
+        public ActionResult Buy(int id)
+        {
+            string email = User.Identity.Name;
+            Customer customer = _context.Customers.Single(c => c.Email == email);
+            Car car = _context.Cars.Single(c => c.Id == id);
+
+            Insurance insurance = new Insurance
+            {
+                CustomerName = customer.Name,
+                CustomerCNP = customer.CNP,
+                CarName = car.Manufacturer + " " + car.Series,
+                CarVIN = car.Vin,
+                CarId = car.Id,
+                ContractValue = 5 * car.Price / 100
+            };
+
+            return View("Buy", insurance);
+        }
+        public ActionResult CarSold(Insurance insurance)
+        {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Buy//" + insurance.CarId.ToString());
+            }
+
+            // Daca modelul e valid adaugam asigurarea in baza de date
+            _context.Insurances.Add(insurance);
+            _context.SaveChanges();
+            // Modificam pretul masinii in negativ pentru a nu mai aparea la vanzare
+            // dar ca sa ramana in baza de date
+
+            var carInDb = _context.Cars.Single(car => car.Id == insurance.CarId);
+            carInDb.Price = 0;
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }

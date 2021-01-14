@@ -28,6 +28,12 @@
                 {
                     continue;
                 }
+
+                if (moto.Price < 0)
+                {
+                    continue;
+                }
+
                 <tr>
                     @{
                         var motoName = moto.Manufacturer + " " + moto.Series;

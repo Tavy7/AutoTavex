@@ -1,0 +1,55 @@
+﻿@model AutoTavex.Models.Insurance
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@{
+    ViewBag.Title = "Buy";
+}
+
+<h2>Buy @Model.CarName</h2>
+
+<p> Take a look at insurance and please complete the duration in years of the contract.</p>
+
+@using (Html.BeginForm("CarSold", "Car", FormMethod.Post)) // ActionName, ControllerName
+{
+    @Html.ValidationSummary(true, "Please fix the following errors.")
+    @Html.HiddenFor(insurance => insurance.Id)
+    @Html.HiddenFor(insurance => insurance.CarId)
+    @Html.HiddenFor(insurance => insurance.ContractValue)
+
+    <div class="form-group">
+        @Html.LabelFor(insurance => insurance.CustomerName)
+        @Html.TextBoxFor(insurance => insurance.CustomerName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(insurance => insurance.CustomerName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(insurance => insurance.CustomerCNP)
+        @Html.TextBoxFor(insurance => insurance.CustomerCNP, new { @class = "form-control" })
+        @Html.ValidationMessageFor(insurance => insurance.CustomerName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(insurance => insurance.CarName)
+        @Html.TextBoxFor(insurance => insurance.CarName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(insurance => insurance.CarName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(insurance => insurance.CarVIN)
+        @Html.TextBoxFor(insurance => insurance.CarVIN, new { @class = "form-control" })
+        @Html.ValidationMessageFor(insurance => insurance.CarVIN)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(insurance => insurance.DurationInYears)
+        @Html.TextBoxFor(insurance => insurance.DurationInYears, new { @class = "form-control" })
+        @Html.ValidationMessageFor(insurance => insurance.DurationInYears)
+    </div>
+    <br />
+    <p>Price: $ @Model.ContractValue (5% of vehicle value)</p>
+    <br />
+
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Buy</button>
+}

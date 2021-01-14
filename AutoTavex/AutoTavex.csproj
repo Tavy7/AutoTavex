@@ -169,6 +169,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CarController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MotoController.cs" />
@@ -179,15 +180,33 @@
     <Compile Include="Migrations\202101102220396_InitialMigration.Designer.cs">
       <DependentUpon>202101102220396_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202101131728212_SeedUsers.cs" />
-    <Compile Include="Migrations\202101131728212_SeedUsers.Designer.cs">
-      <DependentUpon>202101131728212_SeedUsers.cs</DependentUpon>
+    <Compile Include="Migrations\202101132246429_CustomerTable.cs" />
+    <Compile Include="Migrations\202101132246429_CustomerTable.Designer.cs">
+      <DependentUpon>202101132246429_CustomerTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101132333165_InsuranceTable.cs" />
+    <Compile Include="Migrations\202101132333165_InsuranceTable.Designer.cs">
+      <DependentUpon>202101132333165_InsuranceTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101140028219_InsurancePrice.cs" />
+    <Compile Include="Migrations\202101140028219_InsurancePrice.Designer.cs">
+      <DependentUpon>202101140028219_InsurancePrice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101140030589_InsurancePriceDataype.cs" />
+    <Compile Include="Migrations\202101140030589_InsurancePriceDataype.Designer.cs">
+      <DependentUpon>202101140030589_InsurancePriceDataype.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101140039031_InsuranceCarId.cs" />
+    <Compile Include="Migrations\202101140039031_InsuranceCarId.Designer.cs">
+      <DependentUpon>202101140039031_InsuranceCarId.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Insurance.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Max15YOldExceptSpecial.cs" />
     <Compile Include="Models\Moto.cs" />
@@ -246,8 +265,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -272,17 +289,32 @@
     <Content Include="Views\Car\List.cshtml" />
     <Content Include="Views\Car\Details.cshtml" />
     <Content Include="Views\Car\Form.cshtml" />
-    <Content Include="Views\Moto\Index.cshtml" />
+    <Content Include="Views\Moto\List.cshtml" />
     <Content Include="Views\Moto\Form.cshtml" />
     <Content Include="Views\Moto\Details.cshtml" />
     <Content Include="Views\Car\ReadOnlyList.cshtml" />
+    <Content Include="Views\Moto\ReadOnlyList.cshtml" />
+    <Content Include="Views\Customer\Form.cshtml" />
+    <Content Include="Views\Car\Buy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202101102220396_InitialMigration.resx">
       <DependentUpon>202101102220396_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101131728212_SeedUsers.resx">
-      <DependentUpon>202101131728212_SeedUsers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202101132246429_CustomerTable.resx">
+      <DependentUpon>202101132246429_CustomerTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101132333165_InsuranceTable.resx">
+      <DependentUpon>202101132333165_InsuranceTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101140028219_InsurancePrice.resx">
+      <DependentUpon>202101140028219_InsurancePrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101140030589_InsurancePriceDataype.resx">
+      <DependentUpon>202101140030589_InsurancePriceDataype.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101140039031_InsuranceCarId.resx">
+      <DependentUpon>202101140039031_InsuranceCarId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -298,7 +330,9 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Insurance\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
